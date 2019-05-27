@@ -14,6 +14,10 @@ html, body {
   list-style: none;
 }
 
+.hide {
+  display: none !important;
+}
+
 header {
   line-height: 2.5rem;
   font-size: 2.5rem;
@@ -25,6 +29,12 @@ header {
 #title {
   font-style: italic;
   text-transform: uppercase;
+}
+
+#name {
+  font-size: .6em;
+  margin-right: 4rem;
+  display: inline-block;
 }
 
 #bottom {
@@ -43,6 +53,20 @@ aside {
   width: 15%;
   background-color: #0B1A23;
   padding: 2rem 1rem;
+  color: #798186;
+}
+
+aside li {
+  padding-left: 1.5rem;
+  margin-left: -.9rem;
+  font-size: .9em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+aside li.selected {
+  border-left: .15rem solid #30FCB4;
+  color: #CACFD1;
 }
 
 main {
@@ -64,13 +88,14 @@ main {
   margin-right: 1rem;
   position: relative;
   background-size: cover;
+  background-position: center center;
 }
 
 .item.selected {
   box-shadow: 0 0 .5rem .2rem #8bf;
 }
 
-.name {
+.item-name {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -104,6 +129,9 @@ main {
   background-color: transparent;
   color: #CACFD1;
   font-size: 1.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #buttons .btn:nth-child(5) {
@@ -146,4 +174,38 @@ main {
   top: 6rem;
   height: 20%;
   background-color: #205876;
+}
+
+#modal {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  margin-left: -20rem;
+  margin-bottom: -2rem;
+  width: 40rem;
+  background-color: #303A3F;
+  font-size: 1.5rem;
+  padding: 2rem;
+  z-index: 100;
+}
+
+#modal .modal-content {
+  min-height: 3rem;
+  padding-bottom: 5rem;
+}
+
+#modal .modal-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn.confirm {
+  background-color: #f00;
+  border-color: #f00;
+  color: white;
 }
