@@ -1,0 +1,149 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #142732;
+  font-size: 1vw;
+  color: #CACFD1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header {
+  line-height: 2.5rem;
+  font-size: 2.5rem;
+  padding: .5rem .85rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#title {
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+#bottom {
+  display: flex;
+  border: .35rem solid #303A3F;
+  height: 54.8rem;
+}
+
+aside, main {
+  padding: 2rem 2rem 0rem 2rem;
+  font-size: 2rem;
+  height: 100%;
+}
+
+aside {
+  width: 15%;
+  background-color: #0B1A23;
+  padding: 2rem 1rem;
+}
+
+main {
+  padding: 2rem 0 0 1rem;
+  width: 85%;
+  position: relative;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.item {
+  width: 19rem;
+  height: 15rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  position: relative;
+  background-size: cover;
+}
+
+.item.selected {
+  box-shadow: 0 0 .5rem .2rem #8bf;
+}
+
+.name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1;
+  font-size: .8em;
+  padding: .5rem;
+}
+
+.item:nth-child(4n) {
+  margin-right: 0;
+}
+
+#buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem 4.5rem 1rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: .15rem solid #CACFD1; 
+  border-radius: 2rem;
+  padding: .5rem;
+  width: 15rem;
+  margin-left: 1rem;
+  background-color: transparent;
+  color: #CACFD1;
+  font-size: 1.5rem;
+}
+
+#buttons .btn:nth-child(5) {
+  margin:0;
+}
+
+#scroll {
+  position: absolute;
+  top: 0;
+  right: .5rem;
+  height: 100%;
+  width: 3rem;
+}
+
+#up, #down {
+  position: absolute;
+  width: 3rem;
+  text-align: center;
+  height: 3rem;
+  border: .15rem solid #CACFD1; 
+  border-radius: 3rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+#up {
+  top: 2rem;
+  line-height: 2.3rem;
+}
+
+#down {
+  bottom: 5rem;
+  line-height: 2.6rem;
+}
+
+#marker {
+  position: absolute;
+  width: 66%;
+  right: .5rem;
+  top: 6rem;
+  height: 20%;
+  background-color: #205876;
+}
