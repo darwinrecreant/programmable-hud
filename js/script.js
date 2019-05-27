@@ -6,6 +6,14 @@
       $$(".hide").forEach((elem) => {
         elem.classList.remove('hide');
       });
+      setTimeout(() => {
+        const arr = [];
+        $$('.clickable').forEach((elem) => {
+          const rect = elem.getBoundingClientRect();
+          arr.push(`${elem.textContent.trim()}, ${(rect.left /  window.innerWidth).toFixed(3)}, ${(rect.width / window.innerWidth).toFixed(3)}, ${(rect.top / window.innerHeight).toFixed(3)}, ${(rect.height / window.innerHeight).toFixed(3)}`);
+        });
+        console.log(arr.join(",\n"));
+      }, 100);
     } else {
       let settings  = parseHash(unescape(location.hash.substring(1)));
       update(settings);
@@ -45,13 +53,13 @@
     for(let i in parts) {
       if (parts[i] != lastParts[i]) res.changed[i] = true;
     }
+    res.scroll = escaped2list(parts[9], "`").map((n) => parseInt(n));
     lastParts = parts;
     return res;
   }
   
   function update(settings) {
     let i = 0;
-    console.log(settings)
     if (settings.changed[2]) $("#title").textContent = settings.hudName;
     if (settings.hudName != "") $("#title").classList.remove("hide");
     else $("#title").classList.add("hide");
@@ -107,6 +115,13 @@
           elem.classList.remove("selected");
         }
       });
+    }
+
+    if (settings.changed[9])  {
+      if (settings.scroll && settings.scroll[1] > 1) {
+        $('#scroll').classList.remove("hide");
+        $("#marker").setAttribute("style", `margin-top: ${(28 / (settings.scroll[1] - 1)) * settings.scroll[0]}rem`)
+      }
     }
     const modal = $("#modal");
     modal.classList.add("hide");
