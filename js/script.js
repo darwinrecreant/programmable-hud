@@ -45,6 +45,7 @@
       try {
         item.image = "https://i.imgur.com/" + values[0].replace(/[^a-zA-Z0-9]/g, "") + "l.jpg";
         item.title = values[1];
+        item.count = values[2];
         return item;
       } catch(e) {
       }
@@ -101,12 +102,19 @@
         const isSelected = settings.selectedItems.indexOf(i) != -1;
         let elem = items[i++];
         let name = elem.querySelector('.item-name');
-        if (item.title == "") {
+        let count = elem.querySelector('.count');
+        if (!item.title || item.title == "") {
           name.classList.add('hide');
         } else {
           name.classList.remove('hide');
         }
         name.textContent = item.title;
+        if (!item.count || item.count == "") {
+          count.classList.add('hide');
+        } else {
+          count.classList.remove('hide');
+        }
+        count.textContent = item.count;
         elem.classList.remove("hide");
         elem.setAttribute("style", `background-image: url(${item.image});`);
         if (isSelected) {

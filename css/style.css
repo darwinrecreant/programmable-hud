@@ -21,9 +21,13 @@ html, body {
 header {
   line-height: 2.5rem;
   font-size: 2.5rem;
-  padding: .5rem .85rem;
+  padding: .5rem 1.5rem;
   display: flex;
   justify-content: space-between;
+}
+
+.corner {
+  display: flex;
 }
 
 #title {
@@ -34,7 +38,7 @@ header {
 #name {
   font-size: .6em;
   margin-right: 4rem;
-  display: inline-block;
+  display: block;
 }
 
 #bottom {
@@ -91,6 +95,10 @@ main {
   background-position: center center;
 }
 
+.item:nth-child(4n) {
+  margin-right: 0;
+}
+
 .item.selected {
   box-shadow: 0 0 .5rem .2rem #8bf;
 }
@@ -105,8 +113,18 @@ main {
   padding: .5rem;
 }
 
-.item:nth-child(4n) {
-  margin-right: 0;
+.count {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  background-color: black;
+  z-index: 1;
+  font-size: .5em;
+  padding: .5rem .7rem;
+  color: white;
+  font-weight: bold;
+  line-height: 1rem;
 }
 
 #buttons {
