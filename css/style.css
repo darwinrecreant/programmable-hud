@@ -227,3 +227,16 @@ main {
   border-color: #f00;
   color: white;
 }
+
+#timer {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  background-color: black;
+  z-index: 101;
+  font-size: 1rem;
+  padding: 1rem;
+  color: white;
+  font-weight: bold;
+  line-height: 1rem;
+}

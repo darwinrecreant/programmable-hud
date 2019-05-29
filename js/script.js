@@ -1,6 +1,7 @@
 
 (function($, $$) {
   var lastParts = {};
+  var timer = null;
   try {
     if (location.hash == "") {
       $$(".hide").forEach((elem) => {
@@ -10,7 +11,7 @@
         const arr = [];
         $$('.clickable').forEach((elem) => {
           const rect = elem.getBoundingClientRect();
-          arr.push(`${elem.textContent.trim()}, ${(rect.left /  window.innerWidth).toFixed(3)}, ${(rect.width / window.innerWidth).toFixed(3)}, ${(rect.top / window.innerHeight).toFixed(3)}, ${(rect.height / window.innerHeight).toFixed(3)}`);
+          arr.push(`"${elem.textContent.trim()}", "${(rect.left /  window.innerWidth).toFixed(3)}", "${(rect.width / window.innerWidth).toFixed(3)}", "${(rect.top / window.innerHeight).toFixed(3)}", "${(rect.height / window.innerHeight).toFixed(3)}"`);
         });
         console.log(arr.join(",\n"));
       }, 100);
@@ -55,6 +56,7 @@
       if (parts[i] != lastParts[i]) res.changed[i] = true;
     }
     res.scroll = escaped2list(parts[9], "`").map((n) => parseInt(n));
+    res.timer = parseFloat(parts[10]);;
     lastParts = parts;
     return res;
   }
@@ -126,11 +128,31 @@
     }
 
     if (settings.changed[9])  {
-      if (settings.scroll && settings.scroll[1] > 1) {
+      if (settings.scroll && settings.scroll[1] > 3) {
         $('#scroll').classList.remove("hide");
         $("#marker").setAttribute("style", `margin-top: ${(28 / (settings.scroll[1] - 1)) * settings.scroll[0]}rem`)
       }
     }
+    if (settings.timer > 0) {
+      const elem = $('#timer');
+      if (timer != null) clearInterval(timer);
+      let num = Math.round(settings.timer);
+      elem.textContent = num + "s";
+      elem.classList.remove('hide');
+      timer = setInterval(() => {
+        if (--num > 0) {
+          elem.textContent = num + "s";
+          elem.classList.remove('hide');
+        } else {
+          clearInterval(timer);
+          timer = null;
+          elem.classList.add('hide');
+        }
+      }, 1000);
+    } else {
+      $('#timer').classList.add('hide');
+    }
+
     const modal = $("#modal");
     modal.classList.add("hide");
 
