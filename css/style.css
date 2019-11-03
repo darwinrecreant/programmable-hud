@@ -66,6 +66,7 @@ aside li {
   font-size: .9em;
   white-space: nowrap;
   overflow: hidden;
+  line-height: 1.8em;
 }
 
 aside li.selected {
@@ -100,7 +101,7 @@ main {
 }
 
 .item.selected {
-  box-shadow: 0 0 .5rem .2rem #8bf;
+  box-shadow: 0 0 .4rem .4rem #8bf;
 }
 
 .item-name {
